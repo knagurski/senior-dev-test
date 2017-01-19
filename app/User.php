@@ -2,10 +2,15 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property int id
+ * @property Activity[] activities
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
@@ -27,4 +32,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /** @var array */
+    protected $dates = ['created_at', 'updated_at'];
+
+    /**
+     * @return HasMany
+     */
+    public function activities()
+    {
+        return $this->hasMany('App\Activity');
+    }
+
+    /**
+     * @param Activity $activity
+     * @return User
+     */
+    public function addActivity(Activity $activity)
+    {
+        return $this->activities()->save($activity);
+    }
 }
