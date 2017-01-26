@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/activities', 'ActivitiesController@index');
+Route::get('activities', 'ActivitiesApiController@index')->middleware('auth:api');
+Route::post('activities', 'ActivitiesApiController@create')->middleware('auth:api');
+Route::get('activities/{activity}', 'ActivitiesApiController@read')->middleware('auth:api');
+Route::patch('activities/{activity}', 'ActivitiesApiController@update')->middleware('auth:api');
+Route::delete('activities/{activity}', 'ActivitiesApiController@delete')->middleware('auth:api');
