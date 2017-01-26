@@ -27,6 +27,7 @@ class Activity extends Model
      */
     public function user()
     {
+        // An Activity is associated with a single User
         return $this->belongsTo('App\User');
     }
 }

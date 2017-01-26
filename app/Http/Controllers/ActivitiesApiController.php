@@ -62,7 +62,10 @@ class ActivitiesApiController extends Controller
             throw new UnauthorizedException('Forbidden', 403);
         }
 
+        // make sure we have a subject to fill
         $this->validate($request, ['subject' => 'required']);
+
+        // update the Activity
         $activity->update($request->all());
 
         return $activity;

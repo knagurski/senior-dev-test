@@ -41,6 +41,7 @@ class User extends Authenticatable
      */
     public function activities()
     {
+        // A User can have many Activities
         return $this->hasMany('App\Activity');
     }
 
@@ -50,6 +51,7 @@ class User extends Authenticatable
      */
     public function addActivity(Activity $activity)
     {
+        // associate the passed Activity with the User
         return $this->activities()->save($activity);
     }
 }

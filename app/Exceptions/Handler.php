@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
 
@@ -48,6 +47,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // if the UA accepts JSON, return validation, unauthorised and model not
+        // found exceptions as JSON with the appropriate response codes
         if ($request->acceptsJson()) {
             if ($exception instanceof ValidationException) {
                 return response()->json(

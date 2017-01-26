@@ -23,10 +23,11 @@ Route::post('token', 'TokensController@create')
     ->middleware('auth');
 
 // activity index
-Route::get('activities', 'ActivitiesController@index')
-    ->name('activities')
-    ->middleware('auth');
+Route::get('activities', function() {
+    return view('activities.index');
+})->name('activities')->middleware('auth');
 
+/*
 // Create
 Route::get('activities/add', 'ActivitiesController@add')
     ->name('addActivity')
@@ -44,6 +45,7 @@ Route::patch('activities/{activity}', 'ActivitiesController@update')
     ->middleware('auth');
 
 // Delete
-Route::delete('activites/{activity}', 'ActivitiesController@delete')
+Route::delete('activities/{activity}', 'ActivitiesController@delete')
     ->name('deleteActivity')
     ->middleware('auth');
+*/

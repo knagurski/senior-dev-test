@@ -1,4 +1,7 @@
 <?php
+// I've left this controller here mostly for posterity. During development
+// I experimented with a traditional web CRUD flow to understand how Laravel
+// worked.
 
 namespace App\Http\Controllers;
 

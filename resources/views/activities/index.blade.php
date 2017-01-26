@@ -7,7 +7,8 @@
             @include('tokens.createForm')
 
             <activities></activities>
-            {{--<div class="panel panel-default">
+            {{--<!-- Here for posterity, replaced by Vue component to excercise API -->
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     Activities
                     <a href="{{ route('addActivity') }}" class="btn btn-sm btn-primary pull-right">Create</a>
