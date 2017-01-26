@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index');
 
 // Personal access tokens basic CRUD
 Route::get('tokens', 'TokensController@index');
