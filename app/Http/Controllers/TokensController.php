@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class TokensController extends Controller
 {
-    public function index(Request $request)
+    public function create(Request $request)
     {
-        $tokens = $request->user()->tokens->load('client')->filter(
-            function ($token) {
-                return $token->client->personal_access_client && ! $token->revoked;
-            }
-        )->values();
+        // make sure we have a token name to use
+        $this->validate($request, ['name' => 'required']);
 
-        return view('tokens.index', compact('tokens'));
+        // create and return with the new token
+        return back()->with(
+            'token',
+            Auth::user()->createToken($request->name)->accessToken
+        );
     }
 }

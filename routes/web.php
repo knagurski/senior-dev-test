@@ -17,10 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-// Personal access tokens basic CRUD
-Route::get('tokens', 'TokensController@index');
-Route::post('tokens', 'TokensController@create');
+// token create
+Route::post('token', 'TokensController@create')
+    ->name('createToken')
+    ->middleware('auth');
 
 // activity index
 Route::get('activities', 'ActivitiesController@index')
