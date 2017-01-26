@@ -23,15 +23,27 @@ Route::get('tokens', 'TokensController@index');
 Route::post('tokens', 'TokensController@create');
 
 // activity index
-Route::get('activities', 'ActivitiesController@index')->name('activities');
+Route::get('activities', 'ActivitiesController@index')
+    ->name('activities')
+    ->middleware('auth');
 
 // Create
-Route::get('activities/add', 'ActivitiesController@add')->name('addActivity');
-Route::post('activities', 'ActivitiesController@create')->name('createActivity');
+Route::get('activities/add', 'ActivitiesController@add')
+    ->name('addActivity')
+    ->middleware('auth');
+Route::post('activities', 'ActivitiesController@create')
+    ->name('createActivity')
+    ->middleware('auth');
 
 // Update
-Route::get('activities/{activity}', 'ActivitiesController@edit')->name('editActivity');
-Route::patch('activities/{activity}', 'ActivitiesController@update')->name('updateActivity');
+Route::get('activities/{activity}', 'ActivitiesController@edit')
+    ->name('editActivity')
+    ->middleware('auth');
+Route::patch('activities/{activity}', 'ActivitiesController@update')
+    ->name('updateActivity')
+    ->middleware('auth');
 
 // Delete
-Route::delete('activites/{activity}', 'ActivitiesController@delete')->name('deleteActivity');
+Route::delete('activites/{activity}', 'ActivitiesController@delete')
+    ->name('deleteActivity')
+    ->middleware('auth');

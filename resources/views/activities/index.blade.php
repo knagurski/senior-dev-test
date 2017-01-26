@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <activities></activities>
+            {{--<div class="panel panel-default">
                 <div class="panel-heading">
                     Activities
                     <a href="{{ route('addActivity') }}" class="btn btn-sm btn-primary pull-right">Create</a>
@@ -28,9 +29,8 @@
                                           action="{{ route('deleteActivity', [$activity]) }}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <a
-                                                                                        href="{{ route('editActivity', [$activity]) }}"
-                                                                                        class="btn-success btn btn-sm">Edit</a>
+                                        <a href="{{ route('editActivity', [$activity]) }}"
+                                           class="btn-success btn btn-sm">Edit</a>
                                         <button type="submit"
                                                 class="btn-danger btn btn-sm">
                                             Delete
@@ -41,7 +41,7 @@
                         @endforeach
                         </tbody>
                     </table>
-            </div>
+            </div>--}}
         </div>
     </div>
 </div>
